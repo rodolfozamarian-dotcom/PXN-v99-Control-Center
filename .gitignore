@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 release/
 .claude/
+docs/reddit-post.md
