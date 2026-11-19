@@ -1,0 +1,25 @@
+[package]
+name = "pxn-v99-control-center"
+version = "0.4.1"
+description = "PXN V99 Control Center"
+authors = ["PXN V99 Control Center"]
+edition = "2021"
+
+[lib]
+name = "pxn_cc_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

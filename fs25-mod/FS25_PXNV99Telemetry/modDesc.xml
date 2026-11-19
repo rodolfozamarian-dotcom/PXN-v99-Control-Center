@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="103">
+    <author>PXN V99 Control Center</author>
+    <version>0.4.0.0</version>
+    <title>
+        <en>PXN V99 Telemetry</en>
+        <br>PXN V99 Telemetria</br>
+    </title>
+    <description>
+        <en><![CDATA[Sends engine, clutch, speed and terrain data from the vehicle you are driving to the PXN V99 Control Center app on this PC, which turns it into steering wheel vibration. Client-side only: changes nothing in the game.]]></en>
+        <br><![CDATA[Envia dados do motor, embreagem, velocidade e terreno do veículo que você está dirigindo para o app PXN V99 Control Center neste PC, que os transforma em vibração no volante. Só no cliente: não altera nada no jogo.]]></br>
+    </description>
+    <iconFilename>icon.dds</iconFilename>
+    <multiplayer supported="false" />
+    <extraSourceFiles>
+        <sourceFile filename="scripts/PXNV99Telemetry.lua" />
+    </extraSourceFiles>
+</modDesc>

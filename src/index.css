@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07090c;
+  --color-panel: #0d1015;
+  --color-raised: #141820;
+  --color-line: #1d232c;
+  --color-line-strong: #2b333f;
+  --color-steel: #8a94a3;
+  --color-dim: #525b68;
+  --color-text: #e4e8ee;
+  --color-accent: #2a9dff;
+  --color-accent-soft: #0e3a63;
+  --color-ok: #33d17a;
+  --color-warn: #f2c14e;
+  --color-bad: #ff5468;
+
+  --font-display: "Bahnschrift", "DIN Alternate", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "Cascadia Code", Consolas, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Área de trabalho: grade de pontos discreta, como papel milimetrado de bancada. */
+.workspace {
+  background-color: var(--color-bg);
+  background-image: radial-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: -11px -11px;
+}
+
+/* Rótulo técnico: mono, caixa alta, espaçado. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-steel);
+}
+
+.readout {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.selectable {
+  user-select: text;
+}
+
+/* Painel de instrumento: borda fina e marcas de esquadro nos cantos. */
+.panel {
+  position: relative;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.018), transparent 120px), var(--color-panel);
+  border: 1px solid var(--color-line);
+}
+.panel::before,
+.panel::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  pointer-events: none;
+  border-color: var(--color-line-strong);
+  border-style: solid;
+}
+.panel::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+  border-color: var(--color-accent);
+}
+.panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Slider como fader de mesa: trilho fino e cursor retangular. */
+input[type="range"].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0 var(--fill, 0%),
+    var(--color-line-strong) var(--fill, 0%) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 20px;
+  background: var(--color-text);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(7 9 12 / 0.9);
+  cursor: pointer;
+}
+input[type="range"].slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgb(7 9 12 / 0.9), 0 0 0 4px var(--color-accent);
+}
+input[type="range"].slider:disabled {
+  background: var(--color-line);
+  cursor: not-allowed;
+}
+input[type="range"].slider:disabled::-webkit-slider-thumb {
+  background: var(--color-dim);
+  border-color: var(--color-line-strong);
+  cursor: not-allowed;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
